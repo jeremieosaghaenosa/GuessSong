@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="@drawable/bubble_background"
+              android:orientation="vertical">
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="80dp"
+      android:text="CREATE/LOGIN"
+      android:textColor="#cfffffff"
+      android:textSize="20sp" />
+
+  <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="200dp"
+          android:text="Please create an account to play Guess that Song"
+          android:textColor="@android:color/white"
+          android:id="@+id/status"/>
+
+  <LinearLayout
+      android:id="@+id/login"
+      android:layout_centerInParent="true"
+      android:orientation="vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:background="#34ffffff"
+        android:layout_width="300dp"
+        android:layout_height="50dp">
+
+      <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="10dp"
+              android:background="@android:color/transparent"
+              android:hint="Email"
+              android:textColor="@android:color/white"
+
+              android:textColorHint="#a8ffffff" android:id="@+id/email"/>
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_marginTop="20dp"
+        android:background="#34ffffff"
+        android:layout_width="300dp"
+        android:layout_height="50dp">
+      <EditText
+              android:hint="Password"
+              android:layout_margin="10dp"
+              android:background="@android:color/transparent"
+              android:layout_width="match_parent"
+              android:textColorHint="#a8ffffff"
+              android:textColor="#fff"
+              android:layout_height="wrap_content" android:id="@+id/password"/>
+    </FrameLayout>
+
+  </LinearLayout>
+
+  <FrameLayout
+      android:layout_width="300dp"
+      android:layout_height="50dp"
+      android:layout_below="@id/login"
+      android:layout_marginTop="49dp"
+      android:layout_margin="50dp"
+      android:layout_marginBottom="50dp"
+      android:background="@drawable/login_background" />
+
+  <android.support.constraint.ConstraintLayout
+      android:layout_width="500dp"
+      android:layout_height="530dp">
+
+    <Button
+            android:id="@+id/playbutton"
+            android:layout_width="293dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="448dp"
+            android:text="Play Guess that Song"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+            android:id="@+id/createbutton"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="448dp"
+            android:text="Create Account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+            android:id="@+id/loginbutton"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="484dp"
+            android:layout_marginBottom="212dp"
+            android:text="Login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.174"/>
+  </android.support.constraint.ConstraintLayout>
+
+  <com.github.glomadrian.grav.GravView
+      android:id="@+id/grav"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_centerInParent="true"
+      app:colorGenerator="com.github.glomadrian.grav.generator.paint.ArrayColorGenerator"
+      app:array_colors="@array/bubble"
+      app:pointGenerator="com.github.glomadrian.grav.generator.point.RegularPointGenerator"
+      app:regular_cell_size="300"
+      app:regular_variance="200"
+      app:gravGenerator="com.github.glomadrian.grav.generator.grav.BallGenerator"
+      app:ball_from_size="10dp"
+      app:ball_to_size="20dp"
+      app:animationGenerators="@array/BubbleAnimations"
+      app:side_to_side_min_duration="10000"
+      app:side_to_side_max_duration="10000"
+      app:side_to_side_direction="leftToRight"
+      app:shake_direction="vertical"
+      app:shake_min_duration="10000"
+      app:shake_max_duration="20000"
+      app:shake_variance="500dp"
+      />
+
+
+</RelativeLayout>
