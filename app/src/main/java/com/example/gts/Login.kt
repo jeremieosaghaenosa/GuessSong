@@ -81,7 +81,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
                     Toast.makeText(
-                        baseContext, "Account already created or make sure your password is atleast length 6",
+                        baseContext, "Account already created or make sure your password is at least length 6",
                         Toast.LENGTH_SHORT
                     ).show()
                     updateUI(null)
@@ -170,7 +170,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
 
         } else {
-            status.text = "Please create an account to play Guess that Song"
+            status.text = "Please create an account/login"
 
             createbutton.visibility = View.VISIBLE
             loginbutton.visibility = View.VISIBLE

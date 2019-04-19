@@ -17,16 +17,16 @@ class HorizontalPagerAdapter(private val mContext: Context, private val mIsTwoWa
 
     private val LIBRARIES = arrayOf(Utils.LibraryObject(
             R.drawable.ic_cd_round,
-            "Guess by Song"
+            "Guess that Song"
     ), Utils.LibraryObject(
             R.drawable.ic_artist_round,
-            "Guess by Artist"
+            "Guess that Artist"
     ), Utils.LibraryObject(
             R.drawable.ic_conc_round,
-            "Guess Randomly"
+            "Guess that ???"
     ), Utils.LibraryObject(
             R.drawable.ic_board_round,
-            "LeaderBoard"
+            "Leaderboard"
     ), Utils.LibraryObject(
             R.drawable.ic_setting_round,
             "Player Info/Settings"
