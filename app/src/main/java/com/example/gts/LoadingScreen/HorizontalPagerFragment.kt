@@ -1,5 +1,7 @@
 package com.example.gts.LoadingScreen
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,17 +13,38 @@ import com.example.gts.R
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
 
 
-class HorizontalPagerFragment : Fragment() {
+@SuppressLint("ValidFragment")
+class HorizontalPagerFragment (con: Context) : Fragment(){
+
+    private var con = con
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//        return inflater.inflate(R.layout.fragment_horizontal, container, false)
+
+
+//        val page = inflater.inflate(R.layout.fragment_horizontal, null)
+
+//        page.setOnClickListener(object : View.OnClickListener {
+//            override fun onClick(v: View) {
+//                //this will log the page number that was click
+////                Log.i("TAG", "This page was clicked: $position")
+//                Log.i("TAG", "This page was clicked:")
+//
+//            }
+//        })
+
+
         return inflater.inflate(R.layout.fragment_horizontal, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val horizontalInfiniteCycleViewPager = view.findViewById<View>(R.id.hicvp) as HorizontalInfiniteCycleViewPager
-        horizontalInfiniteCycleViewPager.adapter = HorizontalPagerAdapter(context!!, false)
+//        horizontalInfiniteCycleViewPager.adapter = HorizontalPagerAdapter(context!!, false)
+        horizontalInfiniteCycleViewPager.adapter = HorizontalPagerAdapter(con, false)
+
 
         //        horizontalInfiniteCycleViewPager.setScrollDuration(400);
         //        horizontalInfiniteCycleViewPager.setPageDuration(1000);
@@ -35,8 +58,9 @@ class HorizontalPagerFragment : Fragment() {
         //        horizontalInfiniteCycleViewPager.setMinPageScaleOffset(5.0F);
         //        horizontalInfiniteCycleViewPager.setOnInfiniteCyclePageTransformListener();
 
-        //        horizontalInfiniteCycleViewPager.setCurrentItem(
-        //                horizontalInfiniteCycleViewPager.getRealItem() + 1
-        //        );
+        horizontalInfiniteCycleViewPager.setCurrentItem(
+            horizontalInfiniteCycleViewPager.getRealItem() + 1
+        );
     }
+
 }

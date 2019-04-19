@@ -14,13 +14,24 @@ class Loading : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.loading)
 
-
         val viewPager = findViewById(R.id.vp_main) as ViewPager
-        viewPager.adapter = LoadingPagerAdapter(supportFragmentManager)
+        viewPager.adapter = LoadingPagerAdapter(supportFragmentManager, this)
+        viewPager.setCurrentItem(0)
         viewPager.offscreenPageLimit = 2
 
 //        val navigationTabStrip = findViewById(R.id.nts) as NavigationTabStrip
         //        navigationTabStrip.setTitles("Guess that Song");
 //        navigationTabStrip.setViewPager(viewPager)
+
+
+
+//        viewPager.setOnClickListener(object : View.OnClickListener {
+//            override fun onClick(v: View) {
+//                // Perform action on click
+//                Log.e("PageIndicatorActivity", "PageIndicatorActivity")
+//
+//            }
+//        })
+
     }
 }
