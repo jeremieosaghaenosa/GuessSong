@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.guess_layout.*
 import java.util.*
 
-class GuessActivity:AppCompatActivity(){
+class GuessSongActivity:AppCompatActivity(){
     val Randomizer = MusicRandomizer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

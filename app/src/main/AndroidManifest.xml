@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".Loading">
         </activity>
-        <activity android:name=".GuessActivity">
+        <activity android:name=".GuessSongActivity">
         </activity>
         <activity android:name=".Choice">
         </activity>

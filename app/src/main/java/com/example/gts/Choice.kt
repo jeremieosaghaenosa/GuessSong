@@ -3,10 +3,8 @@ package com.example.gts
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 
 
 class Choice : AppCompatActivity() {
@@ -20,7 +18,7 @@ class Choice : AppCompatActivity() {
         singlePlay.setOnClickListener(object : View.OnClickListener {
 
             override fun onClick(v: View) {
-                val intent = Intent(this@Choice, GuessActivity::class.java)
+                val intent = Intent(this@Choice, GuessSongActivity::class.java)
                 startActivity(intent)
             }
         })
