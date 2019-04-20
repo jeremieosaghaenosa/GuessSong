@@ -47,6 +47,8 @@ class Login : AppCompatActivity(), View.OnClickListener {
 //                startActivity(intent)
 //
 //        }
+        signOut()
+
 
     }
 

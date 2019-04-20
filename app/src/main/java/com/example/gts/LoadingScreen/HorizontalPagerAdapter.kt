@@ -1,10 +1,13 @@
 package com.example.gts.LoadingScreen
 
 import android.content.Context
+import android.content.Intent
 import android.support.v4.view.PagerAdapter
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.gts.GuessActivity
 import com.example.gts.R
 
 
@@ -15,21 +18,23 @@ import com.example.gts.LoadingScreen.Utils.setupItem
 
 class HorizontalPagerAdapter(private val mContext: Context, private val mIsTwoWay: Boolean) : PagerAdapter() {
 
+    private var con = mContext
+
     private val LIBRARIES = arrayOf(Utils.LibraryObject(
-            R.drawable.ic_cd_round,
-            "Guess that Song"
+        R.drawable.ic_cd_round,
+        "Guess by Song"
     ), Utils.LibraryObject(
-            R.drawable.ic_artist_round,
-            "Guess that Artist"
+        R.drawable.ic_artist_round,
+        "Guess by Artist"
     ), Utils.LibraryObject(
-            R.drawable.ic_conc_round,
-            "Guess that ???"
+        R.drawable.ic_conc_round,
+        "Guess Randomly"
     ), Utils.LibraryObject(
-            R.drawable.ic_board_round,
-            "Leaderboard"
+        R.drawable.ic_board_round,
+        "LeaderBoard"
     ), Utils.LibraryObject(
-            R.drawable.ic_setting_round,
-            "Player Info/Settings"
+        R.drawable.ic_setting_round,
+        "Player Info/Settings"
     ))
     private val mLayoutInflater: LayoutInflater
 
@@ -55,13 +60,43 @@ class HorizontalPagerAdapter(private val mContext: Context, private val mIsTwoWa
             //                    new VerticalPagerAdapter(mContext)
             //            );
             verticalInfiniteCycleViewPager.currentItem = position
-        } else {
+
+            view.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View) {
+                    //this will log the page number that was click
+                    Log.i("TAG", "This page was clicked: $position")
+                }
+            })
+
+
+        }
+        else {
             view = mLayoutInflater.inflate(R.layout.item, container, false)
             setupItem(view, LIBRARIES[position])
+            view.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View) {
+                    //this will log the page number that was click
+                    Log.i("TAG", "This page was clicked: $position")
+
+
+                    //Set up position switches if it is a certain number position
+
+
+                    if(position == 0){
+                        var intent = Intent(con, GuessActivity::class.java)
+                        con.startActivity(intent)
+                    }
+
+
+
+
+                }
+            })
         }
 
         container.addView(view)
         return view
+
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {

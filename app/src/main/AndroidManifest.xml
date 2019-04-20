@@ -20,8 +20,6 @@
         </activity>
         <activity android:name=".Login">
         </activity>
-        <activity android:name=".LoadingScreen.l">
-        </activity>
         <activity android:name=".Loading">
         </activity>
         <activity android:name=".GuessActivity">
