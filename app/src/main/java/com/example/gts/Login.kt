@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.bubble.*
 //import jdk.nashorn.internal.runtime.ECMAException.getException
 //import org.junit.experimental.results.ResultMatchers.isSuccessful
 import android.widget.Button
+import com.google.firebase.FirebaseApp
 
 
 class Login : AppCompatActivity(), View.OnClickListener {
@@ -35,9 +36,9 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
         // [START initialize_auth]
         // Initialize Firebase Auth
-//        FirebaseApp.initializeApp(this)
+        FirebaseApp.initializeApp(this)
         mAuth = FirebaseAuth.getInstance()
-        val mAuth = FirebaseAuth.getInstance()
+//        val mAuth = FirebaseAuth.getInstance()
 
         // [END initialize_auth]
 

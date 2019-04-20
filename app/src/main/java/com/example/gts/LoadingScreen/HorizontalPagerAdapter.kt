@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.gts.Choice
 import com.example.gts.GuessActivity
 import com.example.gts.R
 
@@ -83,7 +84,7 @@ class HorizontalPagerAdapter(private val mContext: Context, private val mIsTwoWa
 
 
                     if(position == 0){
-                        var intent = Intent(con, GuessActivity::class.java)
+                        var intent = Intent(con, Choice::class.java)
                         con.startActivity(intent)
                     }
 
