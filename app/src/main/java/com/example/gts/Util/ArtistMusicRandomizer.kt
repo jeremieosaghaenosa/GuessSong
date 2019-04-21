@@ -3,11 +3,8 @@ import com.example.gts.R
 import android.content.Context
 import java.util.ArrayList
 
-/**
- * Created by dennis on 26/01/2016.
- * Method returns an array of card ID's
- */
-class MusicRandomizer {
+
+class ArtistMusicRandomizer {
     fun getIDs(context: Context): ArrayList<Int> {
 
         val res = ArrayList<Int>()

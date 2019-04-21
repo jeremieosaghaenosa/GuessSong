@@ -3,14 +3,13 @@ package com.example.gts
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import com.example.gts.Util.MusicRandomizer
-import com.example.gts.R
+import com.example.gts.Util.SongMusicRandomizer
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.guess_layout.*
 import java.util.*
 
-class GuessSongActivity:AppCompatActivity(){
-    val Randomizer = MusicRandomizer()
+class SingleGuessSongActivity:AppCompatActivity(){
+    val Randomizer = SongMusicRandomizer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.guess_layout)

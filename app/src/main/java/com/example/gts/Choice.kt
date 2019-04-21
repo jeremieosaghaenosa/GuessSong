@@ -18,7 +18,7 @@ class Choice : AppCompatActivity() {
         singlePlay.setOnClickListener(object : View.OnClickListener {
 
             override fun onClick(v: View) {
-                val intent = Intent(this@Choice, GuessSongActivity::class.java)
+                val intent = Intent(this@Choice, SingleGuessSongActivity::class.java)
                 startActivity(intent)
             }
         })
