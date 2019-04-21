@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import com.example.gts.Util.SongMusicRandomizer
 import android.support.v7.app.AppCompatActivity
+import com.example.gts.Util.RandomMusicRandomizer
 import kotlinx.android.synthetic.main.guess_layout.*
 import java.util.*
 
-class SingleGuessSongActivity:AppCompatActivity(){
-    val Randomizer = SongMusicRandomizer()
+class SingleGuessRandomActivity:AppCompatActivity(){
+    val Randomizer = RandomMusicRandomizer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.guess_layout)

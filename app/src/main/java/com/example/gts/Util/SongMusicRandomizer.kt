@@ -19,7 +19,6 @@ class SongMusicRandomizer {
             try {
                 resourceId = fields[i].getInt(drawableResources)
                 val name = context.resources.getResourceEntryName(resourceId)
-                //Use regex to filter out system ressources
                 res.add(resourceId)
             } catch (e: Exception) {
                 i++

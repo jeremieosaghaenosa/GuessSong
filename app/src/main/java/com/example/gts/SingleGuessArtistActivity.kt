@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import com.example.gts.Util.SongMusicRandomizer
 import android.support.v7.app.AppCompatActivity
+import com.example.gts.Util.ArtistMusicRandomizer
 import kotlinx.android.synthetic.main.guess_layout.*
 import java.util.*
 
 class SingleGuessArtistActivity:AppCompatActivity(){
-    val Randomizer = SongMusicRandomizer()
+    val Randomizer = ArtistMusicRandomizer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.guess_layout)
@@ -22,6 +23,7 @@ class SingleGuessArtistActivity:AppCompatActivity(){
 
     fun gameSetup()
     {
+        var done = false
         val list = Randomizer.getIDs(this)
         val rand = Random()
         val id_win: Int = list.get(rand.nextInt(list.size))
@@ -35,31 +37,47 @@ class SingleGuessArtistActivity:AppCompatActivity(){
         var mediaPlayer: MediaPlayer? = MediaPlayer.create(this,id_win)// get the winner first
         val win_btn = rand.nextInt(4) + 1
         helper(win_btn,0,"setup",id_win,id_2,id_3,id_4)
-        txt_start.setTextColor(resources.getColor(android.R.color.black))
-        txt_q.setTextColor(resources.getColor(android.R.color.holo_blue_dark))
-        val timer = object: CountDownTimer(5000, 1000){
+        txt_start.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+        txt_q.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+        val timer = object: CountDownTimer(3000, 1000){
             override fun onTick(millisUntilFinished: Long) {
+                btn_choice_1.isEnabled = false
+                btn_choice_2.isEnabled = false
+                btn_choice_3.isEnabled = false
+                btn_choice_4.isEnabled = false
                 val countdown = ((millisUntilFinished/1000).toInt() + 1).toString()
                 number_count.setTextColor(resources.getColor(android.R.color.white))
                 number_count.text = "" + countdown
             }
             override fun onFinish() {
+                btn_choice_1.isEnabled = true
+                btn_choice_2.isEnabled = true
+                btn_choice_3.isEnabled = true
+                btn_choice_4.isEnabled = true
                 number_count.text = ""
                 txt_start.text = ""
                 txt_q.text = ""
                 mediaPlayer?.start()
                 val timer = object: CountDownTimer(15000, 1000){
                     override fun onTick(millisUntilFinished: Long) {
-                        val countdown = ((millisUntilFinished/1000).toInt() + 1).toString()
-                        number_count.setTextColor(resources.getColor(android.R.color.white))
-                        number_count.text = "" + countdown
+                        if(done != true) {
+                            val countdown = ((millisUntilFinished / 1000).toInt() + 1).toString()
+                            number_count.setTextColor(resources.getColor(android.R.color.white))
+                            number_count.text = "" + countdown
+                        }
+                        else
+                        {
+                            cancel()
+                        }
                     }
                     override fun onFinish() {
-                        number_count.text = ""
-                        txt_start.text = ""
-                        txt_q.text = "???"
                         mediaPlayer?.pause()
-                        finishRound()
+                        helper(win_btn, 6, "checkWin", id_win,id_2,id_3,id_4)
+                        btn_choice_1.isEnabled = false
+                        btn_choice_2.isEnabled = false
+                        btn_choice_3.isEnabled = false
+                        btn_choice_4.isEnabled = false
+                        finishRound(id_win)
                     }
                 }
                 timer.start()
@@ -73,6 +91,9 @@ class SingleGuessArtistActivity:AppCompatActivity(){
             btn_choice_2.isEnabled = false
             btn_choice_3.isEnabled = false
             btn_choice_4.isEnabled = false
+            mediaPlayer?.pause()
+            done = true;
+            finishRound(id_win)
 
 
         }
@@ -82,6 +103,9 @@ class SingleGuessArtistActivity:AppCompatActivity(){
             btn_choice_2.isEnabled = false
             btn_choice_3.isEnabled = false
             btn_choice_4.isEnabled = false
+            mediaPlayer?.pause()
+            done = true;
+            finishRound(id_win)
         }
         btn_choice_3.setOnClickListener {
             helper(win_btn,3,"checkWin",id_win,id_2,id_3,id_4)
@@ -89,6 +113,9 @@ class SingleGuessArtistActivity:AppCompatActivity(){
             btn_choice_2.isEnabled = false
             btn_choice_3.isEnabled = false
             btn_choice_4.isEnabled = false
+            mediaPlayer?.pause()
+            done = true;
+            finishRound(id_win)
         }
         btn_choice_4.setOnClickListener {
             helper(win_btn,4,"checkWin",id_win,id_2,id_3,id_4)
@@ -96,13 +123,19 @@ class SingleGuessArtistActivity:AppCompatActivity(){
             btn_choice_2.isEnabled = false
             btn_choice_3.isEnabled = false
             btn_choice_4.isEnabled = false
+            mediaPlayer?.pause()
+            done = true;
+            finishRound(id_win)
         }
 
 
     }
 
-    fun finishRound(){
-        val timer = object: CountDownTimer(5000, 1000){
+    fun finishRound(id_win: Int){
+        txt_start.text = "Correct Answer: "
+        txt_q.text = resources.getResourceEntryName(id_win)
+        number_count.text = ""
+        val timer = object: CountDownTimer(3000, 1000){
             override fun onTick(millisUntilFinished: Long) {
 
             }
@@ -199,7 +232,7 @@ class SingleGuessArtistActivity:AppCompatActivity(){
                 {
                     btn_choice_4.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
                 }
-                else
+                else if(input_btn != 6)
                 {
                     btn_choice_4.setBackgroundColor(resources.getColor(android.R.color.holo_red_light))
                 }
@@ -225,7 +258,6 @@ class SingleGuessArtistActivity:AppCompatActivity(){
                 }
             }
         }
-
 
     }
 }

@@ -8,8 +8,8 @@ class ArtistMusicRandomizer {
     fun getIDs(context: Context): ArrayList<Int> {
 
         val res = ArrayList<Int>()
-        val drawableResources = R.raw()
-        val c = R.raw::class.java
+        val drawableResources = R.anim()
+        val c = R.anim::class.java
         val fields = c!!.getDeclaredFields()
 
         var i = 0
@@ -19,8 +19,10 @@ class ArtistMusicRandomizer {
             try {
                 resourceId = fields[i].getInt(drawableResources)
                 val name = context.resources.getResourceEntryName(resourceId)
-                //Use regex to filter out system ressources
-                res.add(resourceId)
+                if(name != "fade_in" && name != "fade_out") {
+                    //Use regex to filter out system resources
+                    res.add(resourceId)
+                }
             } catch (e: Exception) {
                 i++
                 continue

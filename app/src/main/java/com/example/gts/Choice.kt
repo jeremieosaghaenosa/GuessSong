@@ -24,8 +24,5 @@ class Choice : AppCompatActivity() {
         })
 
 
-
-
-
     }
 }
