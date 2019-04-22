@@ -28,7 +28,8 @@ class  leaderAdapter(people: ArrayList<user>, context: Context) : ArrayAdapter<u
         if(Name.equals("")){
             Name = current.email
         }
-        val WinsPerce = current.correct.toDouble()/current.guess
+        var WinsPerce = current.correct.toDouble()/current.guess
+        WinsPerce = ("%.3f".format(WinsPerce)).toDouble()
         val Score = current.score
 
 

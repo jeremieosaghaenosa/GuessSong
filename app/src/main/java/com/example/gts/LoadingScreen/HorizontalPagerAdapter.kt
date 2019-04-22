@@ -17,7 +17,7 @@ import com.example.gts.R
 import com.gigamole.infinitecycleviewpager.VerticalInfiniteCycleViewPager
 
 import com.example.gts.LoadingScreen.Utils.setupItem
-import com.example.gts.PlayerSet
+import com.example.gts.Player.PlayerSet
 
 
 class HorizontalPagerAdapter(private val mContext: Context, private val mIsTwoWay: Boolean) : PagerAdapter() {

@@ -38,7 +38,7 @@
         </activity>
         <activity android:name=".Board.Leaderboard">
         </activity>
-        <activity android:name=".PlayerSet">
+        <activity android:name=".Player.PlayerSet">
         </activity>
     </application>
 

@@ -63,6 +63,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
+        signOut()
         val currentUser = mAuth.getCurrentUser()
         signOut()
         updateUI(currentUser)
@@ -117,8 +118,9 @@ class Login : AppCompatActivity(), View.OnClickListener {
                     val currentuser = mAuth.currentUser
                     val intent = Intent(this@Login, Loading::class.java)
 
+                    var friends = ArrayList<user>()
 
-                    val current = user(email, "", 0, 0, 0)
+                    val current = user(email, "", 0, 0, 0, friends)
 
                     FB.collection("users").document(email)
                         .get()
@@ -206,16 +208,18 @@ class Login : AppCompatActivity(), View.OnClickListener {
             status.text = "Welcome to Guess that Song"
 
             info = user.uid
-            Toast.makeText(baseContext, "Welcome, please fill out the form.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, "Please sign in.", Toast.LENGTH_SHORT).show()
 
-            createbutton.visibility = View.GONE
-            loginbutton.visibility = View.GONE
-//            playbutton.visibility = View.VISIBLE
+            createbutton.visibility = View.VISIBLE
+            loginbutton.visibility = View.VISIBLE
+            playbutton.visibility = View.GONE
             password.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
 
         } else {
             status.text = "Please create an account/login"
+
+            Toast.makeText(baseContext, "Welcome, please login.", Toast.LENGTH_SHORT).show()
 
             createbutton.visibility = View.VISIBLE
             loginbutton.visibility = View.VISIBLE

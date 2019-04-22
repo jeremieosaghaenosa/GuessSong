@@ -23,9 +23,11 @@ import android.widget.ListView
 import android.widget.Toast
 import com.example.gts.Board.leaderAdapter
 import com.example.gts.Board.user
+import com.example.gts.Loading
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.leaderboard.*
+import kotlinx.android.synthetic.main.stats.*
 import java.util.HashMap
 
 
@@ -48,6 +50,12 @@ class Leaderboard : AppCompatActivity() {
 
         adapter = leaderAdapter(userList, this)
         list.adapter = adapter
+
+
+        homescreenButton.setOnClickListener({
+            val intent = Intent(this@Leaderboard, Loading::class.java)
+            startActivity(intent)
+        })
 
     }
 
@@ -73,9 +81,10 @@ class Leaderboard : AppCompatActivity() {
                         var guess = k.document.get("guess")
                         var correct = k.document.get("correct")
                         var score = k.document.get("score")
+                        var friends = k.document.get("friends")
 
 
-                        var peep = user(email as String,name as String, guess as Long, correct as Long, score as Long)
+                        var peep = user(email as String,name as String, guess as Long, correct as Long, score as Long, friends as ArrayList<user>)
                         top.add(peep)
                         var sdc = 3
                     }

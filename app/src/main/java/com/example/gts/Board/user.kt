@@ -10,6 +10,7 @@ class user (): Serializable{
     var guess: Long = 0
     var correct: Long = 0
     var score: Long = 0
+    var friends: ArrayList<user> = ArrayList()
 
 
     constructor(
@@ -17,16 +18,18 @@ class user (): Serializable{
         name: String,
         guess: Long,
         correct: Long,
-        score: Long
+        score: Long,
+        friends: ArrayList<user>
     ) : this() {
         this.email = email
         this.name = name
         this.guess = guess
         this.correct = correct
         this.score = score
-
+        this.friends = friends
 
     }
+
 //    fun getemail(): String{
 //        return this.email
 //    }
