@@ -10,6 +10,9 @@ import java.util.*
 
 class SingleGuessSongActivity:AppCompatActivity(){
     val Randomizer = SongMusicRandomizer()
+    var round = 0
+    var score = 0
+    var sum = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.guess_layout)
@@ -22,7 +25,14 @@ class SingleGuessSongActivity:AppCompatActivity(){
 
     fun gameSetup()
     {
+        if(round == 5)
+        {
+            //START ACTIVITY
+        }
         var done = false
+        txt_round.text = "Round " + (round + 1).toString() +"/" +"5"
+        txt_score.text = "Score: " + sum.toString()
+        round++
         val list = Randomizer.getIDs(this)
         val rand = Random()
         val id_win: Int = list.get(rand.nextInt(list.size))
@@ -37,6 +47,8 @@ class SingleGuessSongActivity:AppCompatActivity(){
         val win_btn = rand.nextInt(4) + 1
         helper(win_btn,0,"setup",id_win,id_2,id_3,id_4)
         txt_start.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+        txt_score.setTextColor(resources.getColor(android.R.color.white))
+        txt_round.setTextColor(resources.getColor(android.R.color.white))
         txt_q.setTextColor(resources.getColor(android.R.color.holo_green_dark))
         val timer = object: CountDownTimer(3000, 1000){
             override fun onTick(millisUntilFinished: Long) {
@@ -61,11 +73,13 @@ class SingleGuessSongActivity:AppCompatActivity(){
                     override fun onTick(millisUntilFinished: Long) {
                         if(done != true) {
                             val countdown = ((millisUntilFinished / 1000).toInt() + 1).toString()
+                            score = countdown.toInt()
                             number_count.setTextColor(resources.getColor(android.R.color.white))
                             number_count.text = "" + countdown
                         }
                         else
                         {
+                            sum += score
                             cancel()
                         }
                     }
