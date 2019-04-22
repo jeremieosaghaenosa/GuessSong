@@ -79,7 +79,6 @@ class SingleGuessSongActivity:AppCompatActivity(){
                         }
                         else
                         {
-                            sum += score
                             cancel()
                         }
                     }
@@ -210,6 +209,7 @@ class SingleGuessSongActivity:AppCompatActivity(){
             {
                 if(win_btn == 1)
                 {
+                    sum += score
                     btn_choice_1.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
                 }
                 else
@@ -221,6 +221,7 @@ class SingleGuessSongActivity:AppCompatActivity(){
             {
                 if(win_btn == 2)
                 {
+                    sum += score
                     btn_choice_2.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
                 }
                 else
@@ -232,6 +233,7 @@ class SingleGuessSongActivity:AppCompatActivity(){
             {
                 if(win_btn == 3)
                 {
+                    sum += score
                     btn_choice_3.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
                 }
                 else
@@ -243,6 +245,7 @@ class SingleGuessSongActivity:AppCompatActivity(){
             {
                 if(win_btn == 4)
                 {
+                    sum += score
                     btn_choice_4.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
                 }
                 else if(input_btn != 6)
