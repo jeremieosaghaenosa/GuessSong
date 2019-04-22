@@ -201,26 +201,34 @@ class SingleGuessSongActivity : AppCompatActivity() {
 
     fun helper(win_btn: Int, input_btn: Int, type: String, id_win: Int, id_2: Int, id_3: Int, id_4: Int) {
         if (type == "setup") {
+            var id_win_text = resources.getResourceEntryName(id_win)
+            id_win_text = id_win_text.replace("artist_", "")
+            var id_2_text = resources.getResourceEntryName(id_2)
+            id_2_text = id_2_text.replace("artist_", "")
+            var id_3_text = resources.getResourceEntryName(id_3)
+            id_3_text = id_3_text.replace("artist_", "")
+            var id_4_text = resources.getResourceEntryName(id_4)
+            id_4_text = id_4_text.replace("artist_", "")
             if (win_btn == 1) {
-                btn_choice_1.text = resources.getResourceEntryName(id_win)
-                btn_choice_2.text = resources.getResourceEntryName(id_2)
-                btn_choice_3.text = resources.getResourceEntryName(id_3)
-                btn_choice_4.text = resources.getResourceEntryName(id_4)
+                btn_choice_1.text = id_win_text
+                btn_choice_2.text = id_2_text
+                btn_choice_3.text = id_3_text
+                btn_choice_4.text = id_4_text
             } else if (win_btn == 2) {
-                btn_choice_1.text = resources.getResourceEntryName(id_2)
-                btn_choice_2.text = resources.getResourceEntryName(id_win)
-                btn_choice_3.text = resources.getResourceEntryName(id_3)
-                btn_choice_4.text = resources.getResourceEntryName(id_4)
+                btn_choice_1.text = id_2_text
+                btn_choice_2.text =id_win_text
+                btn_choice_3.text = id_3_text
+                btn_choice_4.text = id_4_text
             } else if (win_btn == 3) {
-                btn_choice_1.text = resources.getResourceEntryName(id_3)
-                btn_choice_2.text = resources.getResourceEntryName(id_2)
-                btn_choice_3.text = resources.getResourceEntryName(id_win)
-                btn_choice_4.text = resources.getResourceEntryName(id_4)
+                btn_choice_1.text = id_3_text
+                btn_choice_2.text = id_2_text
+                btn_choice_3.text = id_win_text
+                btn_choice_4.text = id_4_text
             } else {
-                btn_choice_1.text = resources.getResourceEntryName(id_4)
-                btn_choice_2.text = resources.getResourceEntryName(id_2)
-                btn_choice_3.text = resources.getResourceEntryName(id_3)
-                btn_choice_4.text = resources.getResourceEntryName(id_win)
+                btn_choice_1.text = id_4_text
+                btn_choice_2.text = id_2_text
+                btn_choice_3.text = id_3_text
+                btn_choice_4.text = id_win_text
             }
         } else {
             if (input_btn == 1) {

@@ -8,8 +8,8 @@ class ArtistMusicRandomizer {
     fun getIDs(context: Context): ArrayList<Int> {
 
         val res = ArrayList<Int>()
-        val drawableResources = R.anim()
-        val c = R.anim::class.java
+        val drawableResources = R.raw()
+        val c = R.raw::class.java
         val fields = c!!.getDeclaredFields()
 
         var i = 0
