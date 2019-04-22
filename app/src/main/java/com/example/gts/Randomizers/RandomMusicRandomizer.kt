@@ -1,7 +1,6 @@
-package com.example.gts.Util
+package com.example.gts.Randomizers
 
 import android.content.Context
-import com.example.gts.R
 import java.util.*
 
 class RandomMusicRandomizer {
