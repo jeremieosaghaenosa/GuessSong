@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.gts.Board.Leaderboard
 import com.example.gts.Choice.ArtistChoice
 import com.example.gts.Choice.RandomChoice
 import com.example.gts.Choice.SongChoice
@@ -16,6 +17,7 @@ import com.example.gts.R
 import com.gigamole.infinitecycleviewpager.VerticalInfiniteCycleViewPager
 
 import com.example.gts.LoadingScreen.Utils.setupItem
+import com.example.gts.PlayerSet
 
 
 class HorizontalPagerAdapter(private val mContext: Context, private val mIsTwoWay: Boolean) : PagerAdapter() {
@@ -96,6 +98,16 @@ class HorizontalPagerAdapter(private val mContext: Context, private val mIsTwoWa
 
                     if(position == 2){
                         var intent = Intent(con, RandomChoice::class.java)
+                        con.startActivity(intent)
+                    }
+
+                    if(position == 3){
+                        var intent = Intent(con, Leaderboard::class.java)
+                        con.startActivity(intent)
+                    }
+
+                    if(position == 4){
+                        var intent = Intent(con, PlayerSet::class.java)
                         con.startActivity(intent)
                     }
 

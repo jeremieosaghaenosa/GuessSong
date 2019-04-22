@@ -23,7 +23,7 @@
             android:id="@+id/textView2" android:textSize="35sp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="490dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="231dp"
-            android:layout_marginStart="231dp"/>
+            android:layout_marginStart="231dp" android:textColor="@color/black"/>
     <ImageView
             android:layout_width="208dp"
             android:layout_height="271dp"
@@ -40,7 +40,7 @@
             android:id="@+id/textView" android:textSize="35sp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="490dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp" android:textColor="@color/black"/>
 
 
 </android.support.constraint.ConstraintLayout>

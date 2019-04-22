@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.content.Intent
 import android.text.TextUtils
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -13,12 +14,16 @@ import kotlinx.android.synthetic.main.bubble.*
 //import jdk.nashorn.internal.runtime.ECMAException.getException
 //import org.junit.experimental.results.ResultMatchers.isSuccessful
 import android.widget.Button
+import com.example.gts.Board.user
 import com.google.firebase.FirebaseApp
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class Login : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var FB: FirebaseFirestore
+
 
 
     companion object {
@@ -38,6 +43,8 @@ class Login : AppCompatActivity(), View.OnClickListener {
         // Initialize Firebase Auth
         FirebaseApp.initializeApp(this)
         mAuth = FirebaseAuth.getInstance()
+        FB = FirebaseFirestore.getInstance()
+
 //        val mAuth = FirebaseAuth.getInstance()
 
         // [END initialize_auth]
@@ -107,14 +114,48 @@ class Login : AppCompatActivity(), View.OnClickListener {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
-                    val user = mAuth.currentUser
+                    val currentuser = mAuth.currentUser
+                    val intent = Intent(this@Login, Loading::class.java)
 
-                    runOnUiThread {
-                        val intent = Intent(this@Login, Loading::class.java)
-                        startActivity(intent)
-                    }
 
-                    updateUI(user)
+                    val current = user(email, "", 0, 0, 0)
+
+                    FB.collection("users").document(email)
+                        .get()
+                        .addOnSuccessListener { document ->
+                            if (document.data != null) {
+                                Log.d("MESSAGE", "DocumentSnapshot data: ${document.data}")
+                                startActivity(intent)
+                            } else {
+                                Log.d("MESSAGE", "No such document, so added")
+                                FB.collection("users").document(email)
+                                    .set(current)
+                                    .addOnSuccessListener { Log.d("MESSAGE", "DocumentSnapshot successfully written!") }
+                                    .addOnFailureListener { e -> Log.w("MESSAGE", "Error writing document", e) }
+                                startActivity(intent)
+
+                            }
+
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d("MESSAGE", "No such document, so added", exception)
+                            FB.collection("users").document(email)
+                                .set(current)
+                                .addOnSuccessListener { Log.d("MESSAGE", "DocumentSnapshot successfully written!") }
+                                .addOnFailureListener { e -> Log.w("MESSAGE", "Error writing document", e) }
+                            startActivity(intent)
+
+                        }
+
+
+
+
+//                    runOnUiThread {
+//                        val intent = Intent(this@Login, Loading::class.java)
+//                        startActivity(intent)
+//                    }
+
+//                    updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -170,6 +211,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
             createbutton.visibility = View.GONE
             loginbutton.visibility = View.GONE
 //            playbutton.visibility = View.VISIBLE
+            password.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
 
         } else {
@@ -178,6 +220,8 @@ class Login : AppCompatActivity(), View.OnClickListener {
             createbutton.visibility = View.VISIBLE
             loginbutton.visibility = View.VISIBLE
             playbutton.visibility = View.GONE
+            password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
 
         }
     }

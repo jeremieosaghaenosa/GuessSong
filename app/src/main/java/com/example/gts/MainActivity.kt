@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         timer = Timer()
         timer.schedule(object : TimerTask() {
             override fun run() {
-                val i = Intent(this@MainActivity, SingleGuessSongActivity::class.java)
+                val i = Intent(this@MainActivity, Login::class.java)
                 startActivity(i)
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             }

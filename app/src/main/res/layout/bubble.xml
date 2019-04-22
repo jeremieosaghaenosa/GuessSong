@@ -61,7 +61,8 @@
               android:layout_width="match_parent"
               android:textColorHint="#a8ffffff"
               android:textColor="#fff"
-              android:layout_height="wrap_content" android:id="@+id/password"/>
+              android:layout_height="wrap_content" android:id="@+id/password"
+              android:inputType="textPassword"/>
     </FrameLayout>
 
   </LinearLayout>

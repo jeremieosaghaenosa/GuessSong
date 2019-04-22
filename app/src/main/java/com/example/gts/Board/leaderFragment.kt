@@ -1,4 +1,4 @@
-package com.example.blackjack
+package com.example.gts.Board
 
 import android.arch.lifecycle.Observer
 import kotlinx.android.synthetic.main.leaderboard.*
@@ -20,6 +20,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.gts.R
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.HashMap

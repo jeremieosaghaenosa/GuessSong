@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".Login">
         </activity>
+        <activity android:name=".SongStats">
+        </activity>
         <activity android:name=".Loading">
         </activity>
         <activity android:name=".SingleGuessSongActivity">
@@ -33,6 +35,10 @@
         <activity android:name=".Choice.ArtistChoice">
         </activity>
         <activity android:name=".Choice.RandomChoice">
+        </activity>
+        <activity android:name=".Board.Leaderboard">
+        </activity>
+        <activity android:name=".PlayerSet">
         </activity>
     </application>
 
