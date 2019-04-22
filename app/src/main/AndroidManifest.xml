@@ -24,7 +24,15 @@
         </activity>
         <activity android:name=".SingleGuessSongActivity">
         </activity>
-        <activity android:name=".Choice">
+        <activity android:name=".SingleGuessArtistActivity">
+        </activity>
+        <activity android:name=".SingleGuessRandomActivity">
+        </activity>
+        <activity android:name=".Choice.SongChoice">
+        </activity>
+        <activity android:name=".Choice.ArtistChoice">
+        </activity>
+        <activity android:name=".Choice.RandomChoice">
         </activity>
     </application>
 

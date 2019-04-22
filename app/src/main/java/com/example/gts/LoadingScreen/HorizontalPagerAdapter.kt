@@ -7,7 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.gts.Choice
+import com.example.gts.Choice.ArtistChoice
+import com.example.gts.Choice.RandomChoice
+import com.example.gts.Choice.SongChoice
 import com.example.gts.R
 
 
@@ -83,12 +85,19 @@ class HorizontalPagerAdapter(private val mContext: Context, private val mIsTwoWa
 
 
                     if(position == 0){
-                        var intent = Intent(con, Choice::class.java)
+                        var intent = Intent(con, SongChoice::class.java)
                         con.startActivity(intent)
                     }
 
+                    if(position == 1){
+                        var intent = Intent(con, ArtistChoice::class.java)
+                        con.startActivity(intent)
+                    }
 
-
+                    if(position == 2){
+                        var intent = Intent(con, RandomChoice::class.java)
+                        con.startActivity(intent)
+                    }
 
                 }
             })
