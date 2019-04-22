@@ -19,8 +19,8 @@ class ArtistMusicRandomizer {
             try {
                 resourceId = fields[i].getInt(drawableResources)
                 val name = context.resources.getResourceEntryName(resourceId)
-                if(name != "fade_in" && name != "fade_out") {
                     //Use regex to filter out system resources
+                if(name.matches("(artist_).*".toRegex())) {
                     res.add(resourceId)
                 }
             } catch (e: Exception) {

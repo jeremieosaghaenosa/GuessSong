@@ -19,7 +19,9 @@ class SongMusicRandomizer {
             try {
                 resourceId = fields[i].getInt(drawableResources)
                 val name = context.resources.getResourceEntryName(resourceId)
-                res.add(resourceId)
+                if(!name.matches("(artist_).*".toRegex())) {
+                    res.add(resourceId)
+                }
             } catch (e: Exception) {
                 i++
                 continue
