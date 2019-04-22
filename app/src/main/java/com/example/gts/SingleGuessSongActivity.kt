@@ -3,7 +3,7 @@ package com.example.gts
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import com.example.gts.Util.SongMusicRandomizer
+import com.example.gts.Randomizers.SongMusicRandomizer
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.guess_layout.*
 import java.util.*
