@@ -14,4 +14,18 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+}
+
+
+class Test1 {
+    @Test
+    @Throws(Exception::class)
+    fun addition_isCorrect() {
+        val myClass = MyClass()
+        val result = myClass.add(2, 2)
+        val expected = 4
+
+        assertEquals(expected, result)
+    }
 }

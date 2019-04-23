@@ -110,7 +110,7 @@ class SongStats() : AppCompatActivity() {
 
 
     override fun onBackPressed() {
-        val intent = Intent(this@SongStats, SongChoice::class.java)
+        val intent = Intent(this@SongStats, Loading::class.java)
         startActivity(intent)
         finish();
     }
