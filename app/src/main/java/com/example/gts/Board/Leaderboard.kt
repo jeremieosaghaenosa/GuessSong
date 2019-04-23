@@ -81,10 +81,9 @@ class Leaderboard : AppCompatActivity() {
                         var guess = k.document.get("guess")
                         var correct = k.document.get("correct")
                         var score = k.document.get("score")
-                        var friends = k.document.get("friends")
 
 
-                        var peep = user(email as String,name as String, guess as Long, correct as Long, score as Long, friends as ArrayList<user>)
+                        var peep = user(email as String,name as String, guess as Long, correct as Long, score as Long)
                         top.add(peep)
                         var sdc = 3
                     }

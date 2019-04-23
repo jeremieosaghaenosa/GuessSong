@@ -118,9 +118,8 @@ class Login : AppCompatActivity(), View.OnClickListener {
                     val currentuser = mAuth.currentUser
                     val intent = Intent(this@Login, Loading::class.java)
 
-                    var friends = ArrayList<user>()
 
-                    val current = user(email, "", 0, 0, 0, friends)
+                    val current = user(email, "", 0, 0, 0)
 
                     FB.collection("users").document(email)
                         .get()

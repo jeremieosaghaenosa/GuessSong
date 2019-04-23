@@ -1,9 +1,9 @@
-package com.example.gts.Board
+package com.example.gts.Player
 
 import java.io.Serializable
 
 //song track serializable that i use to add songs in this format everywhere
-class user (): Serializable{
+class friend (): Serializable{
 
     var email: String = ""
     var name: String = ""
