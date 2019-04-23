@@ -16,6 +16,7 @@ class SingleGuessSongActivity : AppCompatActivity() {
     var score: Int = 0
     var sum: Int = 0
     var correct: Int = 0
+    var finished = false
 
     override fun onBackPressed() {
         val intent = Intent(this@SingleGuessSongActivity, SongChoice::class.java)
@@ -34,6 +35,14 @@ class SingleGuessSongActivity : AppCompatActivity() {
     }
 
     fun gameSetup() {
+        if (round == 3) {
+            val intent = Intent(this@SingleGuessSongActivity, SongStats::class.java)
+            intent.putExtra("score", sum);
+            intent.putExtra("correct", correct);
+            intent.putExtra("sum", sum);
+            startActivity(intent)
+            finished = true
+        }
 
         var done = false
         txt_round.text = "Round " + (round + 1).toString() + "/" + "3"
@@ -58,20 +67,6 @@ class SingleGuessSongActivity : AppCompatActivity() {
         txt_round.setTextColor(resources.getColor(android.R.color.black))
         txt_q.setTextColor(resources.getColor(android.R.color.holo_green_dark))
 
-        if (round > 3) {
-            mediaPlayer?.reset()
-//            mediaPlayer?.prepare()
-            mediaPlayer?.stop()
-            mediaPlayer?.release()
-//            mediaPlayer = null
-            val intent = Intent(this@SingleGuessSongActivity, SongStats::class.java)
-            intent.putExtra("score", sum);
-            intent.putExtra("correct", correct);
-            intent.putExtra("sum", sum);
-            startActivity(intent)
-            onDestroy()
-        }
-
         val timer = object : CountDownTimer(3000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 btn_choice_1.isEnabled = false
@@ -91,7 +86,8 @@ class SingleGuessSongActivity : AppCompatActivity() {
                 number_count.text = ""
                 txt_start.text = ""
                 txt_q.text = ""
-                mediaPlayer?.start()
+                if (!finished){
+                    mediaPlayer?.start()
                 val timer = object : CountDownTimer(15000, 1000) {
                     override fun onTick(millisUntilFinished: Long) {
                         if (done != true) {
@@ -115,6 +111,7 @@ class SingleGuessSongActivity : AppCompatActivity() {
                     }
                 }
                 timer.start()
+            }
             }
         }
         timer.start()

@@ -17,6 +17,7 @@ class SingleGuessArtistActivity : AppCompatActivity() {
     var score: Int = 0
     var sum: Int = 0
     var correct: Int = 0
+    var finished = false
 
     override fun onBackPressed() {
         val intent = Intent(this@SingleGuessArtistActivity, SongChoice::class.java)
@@ -35,6 +36,14 @@ class SingleGuessArtistActivity : AppCompatActivity() {
     }
 
     fun gameSetup() {
+        if (round == 3) {
+            val intent = Intent(this@SingleGuessArtistActivity, SongStats::class.java)
+            intent.putExtra("score", sum);
+            intent.putExtra("correct", correct);
+            intent.putExtra("sum", sum);
+            startActivity(intent)
+            finished = true
+        }
 
         var done = false
         txt_round.text = "Round " + (round + 1).toString() + "/" + "3"
@@ -59,20 +68,6 @@ class SingleGuessArtistActivity : AppCompatActivity() {
         txt_round.setTextColor(resources.getColor(android.R.color.black))
         txt_q.setTextColor(resources.getColor(android.R.color.holo_green_dark))
 
-        if (round > 3) {
-            mediaPlayer?.reset()
-//            mediaPlayer?.prepare()
-            mediaPlayer?.stop()
-            mediaPlayer?.release()
-//            mediaPlayer = null
-            val intent = Intent(this@SingleGuessArtistActivity, SongStats::class.java)
-            intent.putExtra("score", sum);
-            intent.putExtra("correct", correct);
-            intent.putExtra("sum", sum);
-            startActivity(intent)
-            onDestroy()
-        }
-
         val timer = object : CountDownTimer(3000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 btn_choice_1.isEnabled = false
@@ -92,30 +87,32 @@ class SingleGuessArtistActivity : AppCompatActivity() {
                 number_count.text = ""
                 txt_start.text = ""
                 txt_q.text = ""
-                mediaPlayer?.start()
-                val timer = object : CountDownTimer(15000, 1000) {
-                    override fun onTick(millisUntilFinished: Long) {
-                        if (done != true) {
-                            val countdown = ((millisUntilFinished / 1000).toInt() + 1).toString()
-                            score = countdown.toInt()
-                            number_count.setTextColor(resources.getColor(android.R.color.white))
-                            number_count.text = "" + countdown
-                        } else {
-                            cancel()
+                if (!finished){
+                    mediaPlayer?.start()
+                    val timer = object : CountDownTimer(15000, 1000) {
+                        override fun onTick(millisUntilFinished: Long) {
+                            if (done != true) {
+                                val countdown = ((millisUntilFinished / 1000).toInt() + 1).toString()
+                                score = countdown.toInt()
+                                number_count.setTextColor(resources.getColor(android.R.color.white))
+                                number_count.text = "" + countdown
+                            } else {
+                                cancel()
+                            }
+                        }
+
+                        override fun onFinish() {
+                            mediaPlayer?.pause()
+                            helper(win_btn, 6, "checkWin", id_win, id_2, id_3, id_4)
+                            btn_choice_1.isEnabled = false
+                            btn_choice_2.isEnabled = false
+                            btn_choice_3.isEnabled = false
+                            btn_choice_4.isEnabled = false
+                            finishRound(id_win)
                         }
                     }
-
-                    override fun onFinish() {
-                        mediaPlayer?.pause()
-                        helper(win_btn, 6, "checkWin", id_win, id_2, id_3, id_4)
-                        btn_choice_1.isEnabled = false
-                        btn_choice_2.isEnabled = false
-                        btn_choice_3.isEnabled = false
-                        btn_choice_4.isEnabled = false
-                        finishRound(id_win)
-                    }
+                    timer.start()
                 }
-                timer.start()
             }
         }
         timer.start()
